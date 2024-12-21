@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.crucialfunctiontest.mapper.UserMapper">
+    <insert id="insertUser" >
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+
+            <if test="username != null and username != ''">
+                username,
+            </if>
+            <if test="password != null and password != ''">
+                password,
+            </if>
+            <if test="age != null and age != ''">
+                age,
+            </if>
+            <if test="gender != null and gender != ''">
+                gender,
+            </if>
+            <if test="birthday != null and birthday != ''">
+                birthday,
+            </if>
+            <if test="job != null and job != ''">
+                job
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null and username != ''">
+                #{username},
+            </if>
+            <if test="password != null and password != ''">
+                #{password},
+            </if>
+            <if test="age != null and age != ''">
+                #{age},
+            </if>
+            <if test="gender != null and gender != ''">
+                #{gender},
+            </if>
+            <if test="birthday != null and birthday != ''">
+                #{birthday},
+            </if>
+            <if test="job != null and job != ''">
+                #{job}
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateUser" parameterType="com.example.crucialfunctiontest.entity.User">
+            update user
+            <set>
+                <if test='username != null and username !=" "'>username=#{username},</if>
+                <if test='password != null and password !=" "'>password=#{password},</if>
+                <if test='age != null and age !=" "'>age=#{age},</if>
+                <if test='gender != null and gender !=" "'>gender=#{gender},</if>
+                <if test='birthday != null and birthday !=" "'>birthday=#{birthday},</if>
+                <if test='job != null and job !=" "'>job=#{job}</if>
+            </set>
+            where id=#{id}
+
+    </update>
+
+    <select id="getAllUser" resultType="com.example.crucialfunctiontest.entity.User">
+        select * from user;
+    </select>
+
+    <select id="selectUserById" resultType="com.example.crucialfunctiontest.entity.User">
+     select * from user where id &gt;= #{id};
+    </select>
+
+    <select id="selectUserByAnnotation" resultType="com.example.crucialfunctiontest.entity.User">
+
+        select * from user
+        <where>
+            <if test="id != null and id!=''">
+                and id >= #{id}
+            </if>
+            <if test="username != null and username!=''">
+                and username like concat('%',#{username},'%')
+            </if>
+        </where>
+
+    </select>
+
+    <!--一定加双引号-->
+    <select id="selectUserByEntity" resultType="com.example.crucialfunctiontest.entity.User">
+        select * from user
+        <where>
+            <if test='id!=null and id != " " '>
+                and id &gt;= #{id}
+            </if>
+            <if test='username!=null and username !=" " '>
+                and username like concat('%',#{username},'%')
+            </if>
+        </where>
+
+</select>
+    <select id="selectUserByChoose" resultType="com.example.crucialfunctiontest.entity.User">
+
+        select * from user
+        <where>
+            <choose>
+                <when test='username!=null and username !=" " '>
+                    username like concat('%',#{name},'%')
+                </when>
+                <when test="gender!=null">
+                    and gender=#{gender}
+                </when>
+                <when test="age!=null">
+                    and age>=#{age}
+                </when>
+                <otherwise>
+                    and 1=1
+                </otherwise>
+
+            </choose>
+        </where>
+
+
+
+    </select>
+
+</mapper>

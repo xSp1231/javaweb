@@ -1,0 +1,41 @@
+# 应用服务 WEB 访问端口
+# 配置端口号
+server:
+  port: 8099
+minio:
+  endpoint: http://47.109.143.177:9001
+  accessKey: admin
+  secretKey: admin123
+  bucketName: mystorge
+spring:
+  servlet:
+    multipart:
+      # 设置传输大小
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+  application:
+    name: make-friend
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root123
+
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+
+  redis:
+    port: 6379
+    host: localhost
+    database: 0 # redis 16个库 默认为0库
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml    #配置mybatis扫描mapper文件xml的路径
+
+mybatis-plus:
+  configuration:
+      map-underscore-to-camel-case: false
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
