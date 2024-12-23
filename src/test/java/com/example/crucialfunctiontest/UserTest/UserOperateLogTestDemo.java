@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @Date 2024-12-20 22:47
  */
 @SpringBootTest
-public class UserTestDemo {
+public class UserOperateLogTestDemo {
 
     @Resource
     private UserMapper userMapper;

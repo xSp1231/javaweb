@@ -1,6 +1,7 @@
 package com.example.crucialfunctiontest.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.crucialfunctiontest.annotation.Log;
 import com.example.crucialfunctiontest.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -22,6 +23,8 @@ public interface UserMapper extends BaseMapper<User> {
 
     //注解传递参数 适合于参数不多
     //#{}里面的名称对应的是注解@Param括号里面修饰的名称。 非常好
+
+
     List<User> selectUserByAnnotation(@Param("id") Integer id, @Param("username") String username);
 
     //实体类传参
