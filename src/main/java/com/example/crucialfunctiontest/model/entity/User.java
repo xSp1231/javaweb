@@ -1,4 +1,4 @@
-package com.example.crucialfunctiontest.entity;
+package com.example.crucialfunctiontest.model.entity;
 
 import lombok.Data;
 
@@ -13,7 +13,6 @@ public class User {
     private String password;
     private Integer age;
     private int gender;
-    private String address;
     private String birthday;
     private String job;
 }

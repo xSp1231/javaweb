@@ -2,10 +2,13 @@ package com.example.crucialfunctiontest.controller;
 
 import com.example.crucialfunctiontest.Aop.MyLog;
 import com.example.crucialfunctiontest.annotation.Log;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.crucialfunctiontest.model.dto.PageParam;
+import com.example.crucialfunctiontest.model.entity.User;
+import com.example.crucialfunctiontest.model.vo.PageResult;
+import com.example.crucialfunctiontest.service.UserService;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @Author xushupeng
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 public class TestController {
+
+
     @Log
     @GetMapping("/test")
     public String test(){
@@ -36,4 +41,21 @@ public class TestController {
 //        double a=1/0;
         return "test2";
     }
+
+
+    @Resource
+    private UserService userService;
+
+    @GetMapping("/page/{currentPage}/{pageSize}")
+    public PageResult<User> page(@PathVariable("currentPage") Integer currentPage,
+                       @PathVariable("pageSize") Integer pageSize){
+        //构造分页参数
+        PageParam pageParam=new PageParam(currentPage,pageSize);
+        // 调用service层
+        PageResult<User> pageResult=userService.getUsersByPage(pageParam);
+
+        return pageResult;
+    }
+
+
 }

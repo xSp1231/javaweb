@@ -49,7 +49,7 @@
         </trim>
     </insert>
 
-    <update id="updateUser" parameterType="com.example.crucialfunctiontest.entity.User">
+    <update id="updateUser" parameterType="com.example.crucialfunctiontest.model.entity.User">
             update user
             <set>
                 <if test='username != null and username !=" "'>username=#{username},</if>
@@ -63,15 +63,15 @@
 
     </update>
 
-    <select id="getAllUser" resultType="com.example.crucialfunctiontest.entity.User">
+    <select id="getAllUser" resultType="com.example.crucialfunctiontest.model.entity.User">
         select * from user;
     </select>
 
-    <select id="selectUserById" resultType="com.example.crucialfunctiontest.entity.User">
+    <select id="selectUserById" resultType="com.example.crucialfunctiontest.model.entity.User">
      select * from user where id &gt;= #{id};
     </select>
 
-    <select id="selectUserByAnnotation" resultType="com.example.crucialfunctiontest.entity.User">
+    <select id="selectUserByAnnotation" resultType="com.example.crucialfunctiontest.model.entity.User">
 
         select * from user
         <where>
@@ -86,7 +86,7 @@
     </select>
 
     <!--一定加双引号-->
-    <select id="selectUserByEntity" resultType="com.example.crucialfunctiontest.entity.User">
+    <select id="selectUserByEntity" resultType="com.example.crucialfunctiontest.model.entity.User">
         select * from user
         <where>
             <if test='id!=null and id != " " '>
@@ -98,7 +98,7 @@
         </where>
 
 </select>
-    <select id="selectUserByChoose" resultType="com.example.crucialfunctiontest.entity.User">
+    <select id="selectUserByChoose" resultType="com.example.crucialfunctiontest.model.entity.User">
 
         select * from user
         <where>
@@ -120,6 +120,15 @@
         </where>
 
 
+
+    </select>
+    <select id="selectUsersByPage" parameterType="com.example.crucialfunctiontest.model.dto.PageParam" resultType="com.example.crucialfunctiontest.model.entity.User">
+        SELECT * FROM user
+
+        LIMIT
+        <if test="offset != null and pageSize != null">
+            #{offset}, #{pageSize}
+        </if>
 
     </select>
 

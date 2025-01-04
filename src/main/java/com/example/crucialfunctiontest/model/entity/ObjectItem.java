@@ -1,4 +1,4 @@
-package com.example.crucialfunctiontest.entity;
+package com.example.crucialfunctiontest.model.entity;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.example.crucialfunctiontest.operateLogTest;
 
-import com.example.crucialfunctiontest.entity.OperateLog;
+import com.example.crucialfunctiontest.model.entity.OperateLog;
 import com.example.crucialfunctiontest.mapper.OperateLogMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

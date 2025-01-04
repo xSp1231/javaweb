@@ -1,6 +1,6 @@
 package com.example.crucialfunctiontest.Aop;
 
-import com.example.crucialfunctiontest.entity.OperateLog;
+import com.example.crucialfunctiontest.model.entity.OperateLog;
 import com.example.crucialfunctiontest.mapper.OperateLogMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

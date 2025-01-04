@@ -1,10 +1,11 @@
 package com.example.crucialfunctiontest.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.crucialfunctiontest.annotation.Log;
-import com.example.crucialfunctiontest.entity.User;
+import com.example.crucialfunctiontest.model.dto.PageParam;
+import com.example.crucialfunctiontest.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -42,5 +43,12 @@ public interface UserMapper extends BaseMapper<User> {
     // 通过choose查询学生信息
     List<User> selectUserByChoose(@Param("username") String name, @Param("gender") int gender, @Param("age") Integer age);
 
+
+
+    //分页
+    List<User> selectUsersByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+    @Select("select count(*) from user")
+    int countUsers();
 
 }

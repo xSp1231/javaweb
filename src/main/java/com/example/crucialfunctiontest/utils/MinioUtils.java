@@ -5,7 +5,7 @@ package com.example.crucialfunctiontest.utils;
  * @Date 2024-07-17 13:11
  */
 
-import com.example.crucialfunctiontest.entity.ObjectItem;
+import com.example.crucialfunctiontest.model.entity.ObjectItem;
 import io.minio.*;
 import io.minio.messages.DeleteError;
 import io.minio.messages.DeleteObject;

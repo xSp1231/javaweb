@@ -1,7 +1,6 @@
 package com.example.crucialfunctiontest.mapper;
 
-import com.example.crucialfunctiontest.annotation.Log;
-import com.example.crucialfunctiontest.entity.OperateLog;
+import com.example.crucialfunctiontest.model.entity.OperateLog;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 

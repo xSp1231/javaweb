@@ -1,6 +1,6 @@
 package com.example.crucialfunctiontest.UserTest;
 
-import com.example.crucialfunctiontest.entity.User;
+import com.example.crucialfunctiontest.model.entity.User;
 import com.example.crucialfunctiontest.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
